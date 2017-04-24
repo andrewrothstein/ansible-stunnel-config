@@ -1,0 +1,25 @@
+---
+- name: resolve platform specific vars
+  include_vars: '{{item}}'
+  with_first_found:
+    - files:
+        - '{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
+        - '{{ansible_distribution}}.yml'
+        - '{{ansible_os_family}}.yml'
+      skip: true
+      paths:
+        - '{{role_path}}/vars'
+
+- name: writing configuration...
+  become: '{{stunnel_privilege_escalate}}'
+  become_user: root
+  with_items:
+    - t: stunnel-conf.j2
+      n: '{{stunnel_app_name}}.conf'
+      d: '{{stunnel_conf_dir}}'
+      m: '0644'
+  template:
+    src: '{{item.t}}'
+    dest: '{{item.d}}/{{item.n}}'
+    mode: '{{item.m}}'
+    

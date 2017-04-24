@@ -1,0 +1,3 @@
+---
+stunnel_etc_dir: /usr/local/etc
+stunnel_privilege_escalate: False

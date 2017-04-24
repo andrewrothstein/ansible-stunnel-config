@@ -1,0 +1,23 @@
+---
+stunnel_etc_dir: /etc
+stunnel_privilege_escalate: True
+
+#stunnel_app_name: redis-server
+#stunnel_app_mode: server
+#stunnel_app_secrets_dir: /path/to/secrets
+#stunnel_app_keyname: tls.key
+#stunnel_app_certname: tls.crt
+#stunnel_app_accept:
+#  ty: ip
+#  bind: '0.0.0.0'
+#  port: 106379
+#stunnel_app_connect:
+#  ty: ip
+#  host: '127.0.0.1'
+#  port: 6379
+
+# example using a unix socket
+#stunnel_app_connect:
+#  ty: unix
+#  socket: /path/to/unix/socket.sock
+

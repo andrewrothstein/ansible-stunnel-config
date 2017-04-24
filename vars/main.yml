@@ -1,0 +1,3 @@
+---
+# vars file for stunnel-config
+stunnel_conf_dir: '{{stunnel_etc_dir}}/stunnel'
