@@ -7,11 +7,11 @@
       stunnel_app_secrets_dir: /server-secrets/tls
       stunnel_app_accept:
         ty: ip
-        ip: '0.0.0.0'
+        bind: '0.0.0.0'
         port: 106379
       stunnel_app_connect:
         ty: ip
-        ip: '127.0.0.1'
+        host: localhost
         port: 6379
     - role: '{{playbook_dir}}'
       stunnel_app_name: redis-client
@@ -19,7 +19,7 @@
       stunnel_app_secrets_dir: /client-secrets/tls
       stunnel_app_accept:
         ty: ip
-        bind: '127.0.0.1'
+        bind: localhost
         port: 6379
       stunnel_app_connect:
         ty: ip
