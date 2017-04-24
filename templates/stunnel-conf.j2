@@ -8,6 +8,7 @@ server = yes
 {% elif stunnel_app_mode == 'client' %}
 client = yes
 {% endif %}
+{% endif %}
 
 {% if stunnel_accept.ty == 'ip' %}
 accept={{stunnel_app_accept.bind}}:{{stunnel_app_accept.port}}
