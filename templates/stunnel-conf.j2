@@ -1,6 +1,6 @@
 [{{stunnel_app_name}}]
-key = {{stunnel_app_secrets_dir}}/{{stunnel_app_keyname}}
-cert = {{stunnel_app_secrets_dir}}/{{stunnel_app_certname}}
+key = {{stunnel_app_secrets_dir}}/{{stunnel_app_keyname|default('tls.key')}}
+cert = {{stunnel_app_secrets_dir}}/{{stunnel_app_certname|default('tls.crt')}}
 
 {% if stunnel_app_mode is defined %}
 {% if stunnel_app_mode == 'server' %}
