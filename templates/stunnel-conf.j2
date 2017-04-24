@@ -10,7 +10,7 @@ client = yes
 {% endif %}
 {% endif %}
 
-{% if stunnel_accept.ty == 'ip' %}
+{% if stunnel_app_accept.ty == 'ip' %}
 accept={{stunnel_app_accept.bind}}:{{stunnel_app_accept.port}}
 {% elif stunnel_app_accept.ty == 'unix' %}
 accept={{stunnel_app_accept.socket}}
