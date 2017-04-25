@@ -11,11 +11,11 @@
         - '{{role_path}}/vars'
 
 - name: writing configuration...
-  become: '{{stunnel_privilege_escalate}}'
+  become: '{{stunnel_config_privilege_escalate}}'
   become_user: root
   with_items:
     - f: stunnel.conf
-      d: '{{stunnel_conf_dir}}'
+      d: '{{stunnel_config_dir}}'
       m: '0644'
   template:
     src: '{{item.f}}.j2'

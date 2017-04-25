@@ -6,71 +6,71 @@ chroot = {{stunnel_config_options.chroot}}
 compression = {{stunnel_config_options.compression}}
 {% endif %}
 
-{% if stunnel_config.options.debug is defined %}
+{% if stunnel_config_options.debug is defined %}
 debug = {{stunnel_config_options.debug}}
 {% endif %}
 
-{% if stunnel_config.options.EGD is defined %}
+{% if stunnel_config_options.EGD is defined %}
 EGD = {{stunnel_config_options.EGD}}
 {% endif %}
 
-{% if stunnel_config.options.engine is defined %}
+{% if stunnel_config_options.engine is defined %}
 engine = {{stunnel_config_options.engine}}
 {% endif %}
 
-{% if stunnel_config.options.engineCtrl is defined %}
-{% for c in stunnel_config.options.engineCtrl %}
+{% if stunnel_config_options.engineCtrl is defined %}
+{% for c in stunnel_config_options.engineCtrl %}
 engineCtrl = {{c}}
 {% endfor %}
 {% endif %}
 
-{% if stunnel_config.options.engineDefault is defined %}
+{% if stunnel_config_options.engineDefault is defined %}
 engineDefault = {{stunnel_config_options.engineDefault}}
 {% endif %}
 
-{% if stunnel_config.options.fips is defined %}
+{% if stunnel_config_options.fips is defined %}
 fips = {{stunnel_config_options.fips}}
 {% endif %}
 
-{% if stunnel_config.options.foreground is defined %}
+{% if stunnel_config_options.foreground is defined %}
 foreground = {{stunnel_config_options.foreground}}
 {% endif %}
 
-{% if stunnel_config.options.log is defined %}
+{% if stunnel_config_options.log is defined %}
 log = {{stunnel_config_options.log}}
 {% endif %}
 
-{% if stunnel_config.options.output is defined %}
+{% if stunnel_config_options.output is defined %}
 output = {{stunnel_config_options.output}}
 {% endif %}
 
-{% if stunnel_config.options.pid is defined %}
+{% if stunnel_config_options.pid is defined %}
 pid = {{stunnel_config_options.pid}}
 {% endif %}
 
-{% if stunnel_config.options.RNGbytes is defined %}
+{% if stunnel_config_options.RNGbytes is defined %}
 RNGbytes = {{stunnel_config_options.RNGbytes}}
 {% endif %}
 
-{% if stunnel_config.options.RNDfile is defined %}
+{% if stunnel_config_options.RNDfile is defined %}
 RNDfile = {{stunnel_config_options.RNDfile}}
 {% endif %}
 
-{% if stunnel_config.options.RNDoverwrite is defined %}
+{% if stunnel_config_options.RNDoverwrite is defined %}
 RNDoverwrite = {{stunnel_config_options.RNDoverwrite}}
 {% endif %}
 
-{% if stunnel_config.options.service is defined %}
+{% if stunnel_config_options.service is defined %}
 service = {{stunnel_config_options.service}}
 {% endif %}
 
-{% if stunnel_config.options.socket is defined %}
-{% for s in stunnel_config.options.socket %}
+{% if stunnel_config_options.socket is defined %}
+{% for s in stunnel_config_options.socket %}
 socket = {{s}}
 {% endfor %}
 {% endif %}
 
-{% if stunnel_config.options.syslog is defined %}
+{% if stunnel_config_options.syslog is defined %}
 syslog = {{stunnel_config_options.syslog}}
 {% endif %}
 
