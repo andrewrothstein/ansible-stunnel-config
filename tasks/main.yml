@@ -14,12 +14,11 @@
   become: '{{stunnel_privilege_escalate}}'
   become_user: root
   with_items:
-    - t: stunnel-conf.j2
-      n: '{{stunnel_app_name}}.conf'
+    - f: stunnel.conf
       d: '{{stunnel_conf_dir}}'
       m: '0644'
   template:
-    src: '{{item.t}}'
-    dest: '{{item.d}}/{{item.n}}'
+    src: '{{item.f}}.j2'
+    dest: '{{item.d}}/{{item.f}}'
     mode: '{{item.m}}'
     

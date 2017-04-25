@@ -3,26 +3,28 @@
 - hosts: all
   roles:
     - role: '{{playbook_dir}}'
-      stunnel_app_name: redis-server
-      stunnel_app_secrets_dir: /server-secrets/tls
-      stunnel_app_accept:
-        ty: ip
-        bind: '0.0.0.0'
-        port: 106379
-      stunnel_app_connect:
-        ty: ip
-        host: localhost
-        port: 6379
-    - role: '{{playbook_dir}}'
-      stunnel_app_name: redis-client
-      stunall_app_mode: client
-      stunnel_app_secrets_dir: /client-secrets/tls
-      stunnel_app_accept:
-        ty: ip
-        bind: localhost
-        port: 6379
-      stunnel_app_connect:
-        ty: ip
-        host: redis.example.com
-        port: 106379
+      stunnel_config_options:
+        foreground: yes
+      stunnel_config_apps:
+        - name: example-redis-server
+          secrets_dir: /secrets/tls
+          accept:
+            ty: ip
+            bind: '0.0.0.0'
+            port: 106379
+          connect:
+            ty: ip
+            host: localhost
+            port: 6379
+        - name: example-redis-client
+          mode: client
+          secrets_dir: /secrets/tls
+          accept:
+            ty: ip
+            bind: localhost
+            port: 6379
+          connect:
+            ty: ip
+            host: redis.example.com
+            port: 106379
  
