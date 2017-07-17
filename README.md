@@ -1,6 +1,6 @@
-[![CircleCI](https://circleci.com/gh/andrewrothstein/ansible-stunnel-config.svg?style=svg)](https://circleci.com/gh/andrewrothstein/ansible-stunnel-config)
 andrewrothstein.stunnel-config
 =========
+[![Build Status](https://travis-ci.org/andrewrothstein/ansible-stunnel-config.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-stunnel-config)
 
 Role generates [stunnel](https://stunnel.org) configurations.
 
