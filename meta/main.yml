@@ -23,5 +23,7 @@ galaxy_info:
     - tls
     - proxy
 
-dependencies: []
+dependencies:
+  - role: andrewrothstein.stunnel
+    version: v1.1.0
   
