@@ -79,7 +79,7 @@ syslog = {{ stunnel_config_options.syslog }}
 key = {{ app.secrets_dir }}/{{ app.keyname | default('tls.key') }}
 cert = {{ app.secrets_dir }}/{{ app.certname | default('tls.crt') }}
 
-{% if 'mode' in app.mode %}
+{% if 'mode' in app %}
 {% if app.mode == 'server' %}
 server = yes
 {% elif app.mode == 'client' %}
