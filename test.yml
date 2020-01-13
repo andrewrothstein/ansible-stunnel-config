@@ -1,4 +1,3 @@
-
 ---
 - hosts: all
   roles:
@@ -27,4 +26,3 @@
             ty: ip
             host: redis.example.com
             port: 106379
- 
