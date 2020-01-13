@@ -25,7 +25,7 @@ stunnel_config_options:
     - l:SO_LINGER=1:60
     - r:SO_OOBINLINE=yes
   syslog: no
-  
+
 
 stunnel_config_apps:
   - name: redis-server
@@ -48,6 +48,5 @@ stunnel_config_apps:
       ty: unix
       socket: /var/run/inbound.sock
     connect:
-      ty: unnix
+      ty: unix
       socket: /var/run/outbound.sock
-
