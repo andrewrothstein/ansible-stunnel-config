@@ -1,85 +1,85 @@
-{% if stunnel_config_options.chroot is defined %}
-chroot = {{stunnel_config_options.chroot}}
+{% if 'chroot' in stunnel_config_options %}
+chroot = {{ stunnel_config_options.chroot }}
 {% endif %}
 
-{% if stunnel_config_options.compression is defined %}
-compression = {{stunnel_config_options.compression}}
+{% if 'compression' in stunnel_config_options %}
+compression = {{ stunnel_config_options.compression }}
 {% endif %}
 
-{% if stunnel_config_options.debug is defined %}
-debug = {{stunnel_config_options.debug}}
+{% if 'debug' in stunnel_config_options %}
+debug = {{ stunnel_config_options.debug }}
 {% endif %}
 
-{% if stunnel_config_options.EGD is defined %}
-EGD = {{stunnel_config_options.EGD}}
+{% if 'EGD' in stunnel_config_options %}
+EGD = {{ stunnel_config_options.EGD }}
 {% endif %}
 
-{% if stunnel_config_options.engine is defined %}
-engine = {{stunnel_config_options.engine}}
+{% if 'engine' in stunnel_config_options %}
+engine = {{ stunnel_config_options.engine }}
 {% endif %}
 
-{% if stunnel_config_options.engineCtrl is defined %}
+{% if 'engineCtrl' in stunnel_config_options %}
 {% for c in stunnel_config_options.engineCtrl %}
-engineCtrl = {{c}}
+engineCtrl = {{ c }}
 {% endfor %}
 {% endif %}
 
-{% if stunnel_config_options.engineDefault is defined %}
-engineDefault = {{stunnel_config_options.engineDefault}}
+{% if 'engineDefault' in stunnel_config_options %}
+engineDefault = {{ stunnel_config_options.engineDefault }}
 {% endif %}
 
-{% if stunnel_config_options.fips is defined %}
-fips = {{stunnel_config_options.fips}}
+{% if 'fips' in stunnel_config_options %}
+fips = {{ stunnel_config_options.fips }}
 {% endif %}
 
-{% if stunnel_config_options.foreground is defined %}
+{% if 'foreground' in stunnel_config_options %}
 foreground = {{stunnel_config_options.foreground}}
 {% endif %}
 
-{% if stunnel_config_options.log is defined %}
-log = {{stunnel_config_options.log}}
+{% if 'log' in stunnel_config_options %}
+log = {{ stunnel_config_options.log }}
 {% endif %}
 
-{% if stunnel_config_options.output is defined %}
-output = {{stunnel_config_options.output}}
+{% if 'output' in stunnel_config_options %}
+output = {{ stunnel_config_options.output }}
 {% endif %}
 
-{% if stunnel_config_options.pid is defined %}
-pid = {{stunnel_config_options.pid}}
+{% if 'pid' in stunnel_config_options %}
+pid = {{ stunnel_config_options.pid }}
 {% endif %}
 
-{% if stunnel_config_options.RNGbytes is defined %}
-RNGbytes = {{stunnel_config_options.RNGbytes}}
+{% if 'RNGbyptes' in stunnel_config_options %}
+RNGbytes = {{ stunnel_config_options.RNGbytes }}
 {% endif %}
 
-{% if stunnel_config_options.RNDfile is defined %}
-RNDfile = {{stunnel_config_options.RNDfile}}
+{% if 'RNDfile' in stunnel_config_options %}
+RNDfile = {{ stunnel_config_options.RNDfile }}
 {% endif %}
 
-{% if stunnel_config_options.RNDoverwrite is defined %}
+{% if 'RNDoverwrite' in stunnel_config_options %}
 RNDoverwrite = {{stunnel_config_options.RNDoverwrite}}
 {% endif %}
 
-{% if stunnel_config_options.service is defined %}
-service = {{stunnel_config_options.service}}
+{% if 'service' in stunnel_config_options %}
+service = {{ stunnel_config_options.service }}
 {% endif %}
 
-{% if stunnel_config_options.socket is defined %}
+{% if 'socket' in stunnel_config_options %}
 {% for s in stunnel_config_options.socket %}
-socket = {{s}}
+socket = {{ s }}
 {% endfor %}
 {% endif %}
 
-{% if stunnel_config_options.syslog is defined %}
-syslog = {{stunnel_config_options.syslog}}
+{% if 'syslog' in stunnel_config_options %}
+syslog = {{ stunnel_config_options.syslog }}
 {% endif %}
 
-{% for app in stunnel_config_apps %}
-[{{app.name}}]
-key = {{app.secrets_dir}}/{{app.keyname|default('tls.key')}}
-cert = {{app.secrets_dir}}/{{app.certname|default('tls.crt')}}
+{% for app in stunnel_config_apps | default([]) %}
+[{{ app.name }}]
+key = {{ app.secrets_dir }}/{{ app.keyname | default('tls.key') }}
+cert = {{ app.secrets_dir }}/{{ app.certname | default('tls.crt') }}
 
-{% if app.mode is defined %}
+{% if 'mode' in app.mode %}
 {% if app.mode == 'server' %}
 server = yes
 {% elif app.mode == 'client' %}
@@ -88,231 +88,231 @@ client = yes
 {% endif %}
 
 {% if app.accept.ty == 'ip' %}
-accept={{app.accept.bind}}:{{app.accept.port}}
+accept={{ app.accept.bind }}:{{ app.accept.port }}
 {% elif app.accept.ty == 'unix' %}
-accept={{app.accept.socket}}
+accept={{ app.accept.socket }}
 {% endif %}
 
 {% if app.connect.ty == 'ip' %}
-connect={{app.connect.host}}:{{app.connect.port}}
+connect={{ app.connect.host }}:{{ app.connect.port }}
 {% elif app.connect.ty == 'unix' %}
-connect={{app.connect.socket}}
+connect={{ app.connect.socket }}
 {% endif %}
 
-{% if app.CApath is defined %}
-CApath = {{app.CApath}}
+{% if 'CApath' in app %}
+CApath = {{ app.CApath }}
 {% endif %}
 
-{% if app.CAfile is defined %}
-CAfile = {{app.CAfile}}
+{% if 'CAfile' in app %}
+CAfile = {{ app.CAfile }}
 {% endif %}
 
-{% if app.CRLpath is defined %}
-CRLpath = {{app.CRLpath}}
+{% if 'CRLpath' in app %}
+CRLpath = {{ app.CRLpath }}
 {% endif %}
 
-{% if app.CRLfile is defined %}
-CRLfile = {{app.CRLfile}}
+{% if 'CRLfile' in app %}
+CRLfile = {{ app.CRLfile }}
 {% endif %}
 
-{% if app.checkEmail is defined %}
-checkEmail = {{app.checkEmail}}
+{% if 'checkEmail' in app %}
+checkEmail = {{ app.checkEmail }}
 {% endif %}
 
-{% if app.checkHost is defined %}
-checkHost = {{app.checkHost}}
+{% if 'checkHost' in app %}
+checkHost = {{ app.checkHost }}
 {% endif %}
 
-{% if app.checkIP is defined %}
-checkIP = {{app.checkIP}}
+{% if 'checkIP' in app %}
+checkIP = {{ app.checkIP }}
 {% endif %}
 
-{% if app.ciphers is defined %}
-ciphers = {{app.ciphers}}
+{% if 'ciphers' in app %}
+ciphers = {{ app.ciphers }}
 {% endif %}
 
-{% if app.config is defined %}
+{% if 'config' in app %}
 {% for c in app.config %}
-config = {{c}}
+config = {{ c }}
 {% endfor %}
 {% endif %}
 
-{% if app.curve is defined %}
-curve = {{app.curve}}
+{% if 'curve' in app %}
+curve = {{ app.curve }}
 {% endif %}
 
-{% if app.logId is defined %}
-logId = {{app.logId}}
+{% if 'logId' in app %}
+logId = {{ app.logId }}
 {% endif %}
 
-{% if app.debug is defined %}
-debug = {{app.debug}}
+{% if 'debug' in app %}
+debug = {{ app.debug }}
 {% endif %}
 
-{% if app.delay is defined %}
-delay = {{app.delay}}
+{% if 'delay' in app %}
+delay = {{ app.delay }}
 {% endif %}
 
-{% if app.engineId is defined %}
-engineId = {{app.engineId}}
+{% if 'engineId' in app %}
+engineId = {{ app.engineId }}
 {% endif %}
 
-{% if app.engineNum is defined %}
-engineNum = {{app.engineNum}}
+{% if 'engineNum' in app %}
+engineNum = {{ app.engineNum }}
 {% endif %}
 
-{% if app.exec is defined %}
-exec = {{app.exec}}
+{% if 'exec' in app %}
+exec = {{ app.exec }}
 {% endif %}
 
-{% if app.execArgs is defined %}
-execArgs = {{app.execArgs}}
+{% if 'execArgs' in app %}
+execArgs = {{ app.execArgs }}
 {% endif %}
 
-{% if app.failover is defined %}
+{% if 'failover' in app %}
 failover = {{app.failover}}
 {% endif %}
 
-{% if app.ident is defined %}
-ident = {{app.ident}}
+{% if 'ident' in app %}
+ident = {{ app.ident }}
 {% endif %}
 
-{% if app.libwrap is defined %}
-libwrap = {{app.libwrap}}
+{% if 'libwrap' in app %}
+libwrap = {{ app.libwrap }}
 {% endif %}
 
-{% if app.local is defined %}
-local = {{app.local}}
+{% if 'local' in app %}
+local = {{ app.local }}
 {% endif %}
 
-{% if app.OCSP is defined %}
-OCSP = {{app.OCSP}}
+{% if 'OCSP' in app %}
+OCSP = {{ app.OCSP }}
 {% endif %}
 
-{% if app.OCSPaia is defined %}
-OCSPaia = {{app.OCSPaia}}
+{% if 'OCSPaia' in app %}
+OCSPaia = {{ app.OCSPaia }}
 {% endif %}
 
-{% if app.OCSPflag is defined %}
-OCSPflag = {{app.OCSPflag}}
+{% if 'OCSPflag' in app %}
+OCSPflag = {{ app.OCSPflag }}
 {% endif %}
 
-{% if app.OCSPnonce is defined %}
-OCSPnonce = {{app.OCSPnonce}}
+{% if 'OCSPnonce' in app %}
+OCSPnonce = {{ app.OCSPnonce }}
 {% endif %}
 
-{% if app.options is defined %}
+{% if 'options' in app %}
 {% for o in app.options %}
-options = {{o}}
+options = {{ o }}
 {% endfor %}
 {% endif %}
 
-{% if app.protocol is defined %}
-protocol = {{app.protocol}}
+{% if 'protocol' in app %}
+protocol = {{ app.protocol }}
 {% endif %}
 
-{% if app.protocolAuthentication is defined %}
-protocolAuthentication = {{app.protocolAuthentication}}
+{% if 'protocolAuthentication' in app %}
+protocolAuthentication = {{ app.protocolAuthentication }}
 {% endif %}
 
-{% if app.protocolDomain is defined %}
-protocolDomain = {{app.protocolDomain}}
+{% if 'protocolDomain' in app %}
+protocolDomain = {{ app.protocolDomain }}
 {% endif %}
 
-{% if app.protocolPassword is defined %}
-protocolPassword = {{app.protocolPassword}}
+{% if 'protocolPassword' in app %}
+protocolPassword = {{ app.protocolPassword }}
 {% endif %}
 
-{% if app.protocolUsername is defined %}
-protocolUsername = {{app.protocolUsername}}
+{% if 'protocolUsername' in app %}
+protocolUsername = {{ app.protocolUsername }}
 {% endif %}
 
-{% if app.PSKidentity is defined %}
-PSKidentity = {{app.PSKidentity}}
+{% if 'PSKidentity' in app %}
+PSKidentity = {{ app.PSKidentity }}
 {% endif %}
 
-{% if app.PSKsecrets is defined %}
-PSKsecrets = {{app.PSKsecrets}}
+{% if 'PSKsecrets' in app %}
+PSKsecrets = {{ app.PSKsecrets }}
 {% endif %}
 
-{% if app.pty is defined %}
-pty = {{app.pty}}
+{% if 'pty' in app %}
+pty = {{ app.pty }}
 {% endif %}
 
-{% if app.redirect is defined %}
-redirect = {{app.redirect}}
+{% if 'redirect' in app %}
+redirect = {{ app.redirect }}
 {% endif %}
 
-{% if app.renegotiation is defined %}
-renegotiation = {{app.renegotiation}}
+{% if 'renegotiation' in app %}
+renegotiation = {{ app.renegotiation }}
 {% endif %}
 
-{% if app.reset is defined %}
-reset = {{app.reset}}
+{% if 'reset' in app %}
+reset = {{ app.reset }}
 {% endif %}
 
-{% if app.retry is defined %}
-retry = {{app.retry}}
+{% if 'retry' in app %}
+retry = {{ app.retry }}
 {% endif %}
 
-{% if app.requireCert is defined %}
-requireCert = {{app.requireCert}}
+{% if 'requireCert' in app %}
+requireCert = {{ app.requireCert }}
 {% endif %}
 
-{% if app.setgid is defined %}
-setgid = {{app.setgid}}
+{% if 'setgid' in app %}
+setgid = {{ app.setgid }}
 {% endif %}
 
-{% if app.setuid is defined %}
-setuid = {{app.setuid}}
+{% if 'setuid' in app %}
+setuid = {{ app.setuid }}
 {% endif %}
 
-{% if app.sessionCacheSize is defined %}
-sessionCacheSize = {{app.sessionCacheSize}}
+{% if 'sessionCacheSize' in app %}
+sessionCacheSize = {{ app.sessionCacheSize }}
 {% endif %}
 
-{% if app.sessiond is defined %}
-sessiond = {{app.sessiond}}
+{% if 'sessiond' in app %}
+sessiond = {{ app.sessiond }}
 {% endif %}
 
-{% if app.sni is defined %}
-sni = {{app.sni}}
+{% if 'sni' in app %}
+sni = {{ app.sni }}
 {% endif %}
 
-{% if app.sslVersion is defined %}
-sslVersion = {{app.sslVersion}}
+{% if 'sslVersion' in app %}
+sslVersion = {{ app.sslVersion }}
 {% endif %}
 
-{% if app.stack is defined %}
-stack = {{app.stack}}
+{% if 'stack' in app %}
+stack = {{ app.stack }}
 {% endif %}
 
-{% if app.TIMEOUTbusy is defined %}
-TIMEOUTbusy = {{app.TIMEOUTbusy}}
+{% if 'TIMEOUTbusy' in app %}
+TIMEOUTbusy = {{ app.TIMEOUTbusy }}
 {% endif %}
 
-{% if app.TIMEOUTclose is defined %}
-TIMEOUTclose = {{app.TIMEOUTclose}}
+{% if 'TIMEOUTclose' in app %}
+TIMEOUTclose = {{ app.TIMEOUTclose }}
 {% endif %}
 
-{% if app.TIMEOUTconnect is defined %}
-TIMEOUTconnect = {{app.TIMEOUTconnect}}
+{% if 'TIMEOUTconnect' in app %}
+TIMEOUTconnect = {{ app.TIMEOUTconnect }}
 {% endif %}
 
-{% if app.TIMEOUTidle is defined %}
-TIMEOUTidle = {{app.TIMEOUTidle}}
+{% if 'TIMEOUTidle' in app %}
+TIMEOUTidle = {{ app.TIMEOUTidle }}
 {% endif %}
 
-{% if app.transparent is defined %}
-transparent = {{app.transparent}}
+{% if 'transparent' in app %}
+transparent = {{ app.transparent }}
 {% endif %}
 
-{% if app.verifyChain is defined %}
-verifyChain = {{app.verifyChain}}
+{% if 'verifyChain' in app %}
+verifyChain = {{ app.verifyChain }}
 {% endif %}
 
-{% if app.verifyPeer is defined %}
-verifyPeer = {{app.verifyPeer}}
+{% if 'verifyPeer' in app %}
+verifyPeer = {{ app.verifyPeer }}
 {% endif %}
 
 {% endfor %}
